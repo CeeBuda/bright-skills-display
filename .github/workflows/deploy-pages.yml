@@ -20,12 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 22
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Configure Pages
         id: pages
@@ -36,7 +36,7 @@ jobs:
         # https://<user>.github.io/<repo>/ instead of a root domain.
         env:
           PAGES_BASE: ${{ steps.pages.outputs.base_path && format('{0}/', steps.pages.outputs.base_path) || '/' }}
-        run: npx vite build -c vite.config.pages.ts
+        run: bunx vite build -c vite.config.pages.ts
 
       - name: Add .nojekyll
         run: touch dist/client/.nojekyll
