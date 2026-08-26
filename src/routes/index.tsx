@@ -16,8 +16,10 @@ import {
   Wrench,
   Brain,
 } from "lucide-react";
-import portrait from "@/assets/portrait.jpg.asset.json";
-import cv from "@/assets/cv.pdf.asset.json";
+import portraitUrl from "@/assets/sibusiso-portrait.jpg";
+
+const portrait = { url: portraitUrl };
+const cv = { url: `${import.meta.env.BASE_URL}Sibusiso_Chili_CV.pdf` };
 
 export const Route = createFileRoute("/")({
   head: () => ({
